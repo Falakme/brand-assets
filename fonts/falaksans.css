@@ -1,128 +1,113 @@
-/* FalakSans Webfont Family */
+/* FalakSans Webfont Family (Based on Rubik) */
 
+/* 900 - Black */
 @font-face {
     font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-Black.woff2') format('woff2');
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-Black.woff2') format('woff2');
     font-weight: 900;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-BlackItalic.woff2') format('woff2');
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-BlackItalic.woff2') format('woff2');
     font-weight: 900;
     font-style: italic;
     font-display: swap;
 }
+
+/* 800 - ExtraBold */
 @font-face {
     font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-Bold.woff2') format('woff2');
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'FalakSans';
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-ExtraBoldItalic.woff2') format('woff2');
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* 700 - Bold */
+@font-face {
+    font-family: 'FalakSans';
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-BoldItalic.woff2') format('woff2');
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-BoldItalic.woff2') format('woff2');
     font-weight: 700;
     font-style: italic;
     font-display: swap;
 }
+
+/* 600 - SemiBold */
 @font-face {
     font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-ExtraBold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-ExtraBoldItalic.woff2') format('woff2');
-    font-weight: 700;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-ExtraLight.woff2') format('woff2');
-    font-weight: 200;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-ExtraLightItalic.woff2') format('woff2');
-    font-weight: 200;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-Italic.woff2') format('woff2');
-    font-weight: 400;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-Light.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-LightItalic.woff2') format('woff2');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-MediumItalic.woff2') format('woff2');
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-SemiBold.woff2') format('woff2');
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-SemiBold.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-SemiBoldItalic.woff2') format('woff2');
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-SemiBoldItalic.woff2') format('woff2');
     font-weight: 600;
     font-style: italic;
     font-display: swap;
 }
+
+/* 500 - Medium */
 @font-face {
     font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-Thin.woff2') format('woff2');
-    font-weight: 100;
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-Medium.woff2') format('woff2');
+    font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'FalakSans';
-    src: url('https://falakme.github.io/brand-assets/fonts/Falak Sans-ThinItalic.woff2') format('woff2');
-    font-weight: 100;
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-MediumItalic.woff2') format('woff2');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* 400 - Regular */
+@font-face {
+    font-family: 'FalakSans';
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'FalakSans';
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-Italic.woff2') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* 300 - Light */
+@font-face {
+    font-family: 'FalakSans';
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'FalakSans';
+    src: url('https://falakme.github.io/brand-assets/fonts/FalakSans-LightItalic.woff2') format('woff2');
+    font-weight: 300;
     font-style: italic;
     font-display: swap;
 }
