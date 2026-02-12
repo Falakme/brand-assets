@@ -1,65 +1,53 @@
+name: auto-resize
+
 on:
   push:
     paths:
       - 'logos/core/icon-square.png'
-      - 'logos/core/icon-circular.png'
-  workflow_dispatch: # Allows manual triggering if needed
+      - 'logos/core/icon-circle.png'
+  workflow_dispatch:
 
-# Grant permission to write the new files back to the repo
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
 jobs:
-  resize-images:
+  resize:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
-      - name: Install ImageMagick
-        run: sudo apt-get update && sudo apt-get install -y imagemagick
+      - name: Install dependencies
+        run: |
+          if ! command -v convert &> /dev/null; then
+            sudo apt-get update && sudo apt-get install -y imagemagick
+          fi
 
-      - name: Generate Icon Sizes
+      - name: Process Images
         run: |
           cd logos/core
-          
-          # Define the standard sizes
           SIZES=(16 32 48 64 128 180 192 256 512)
+          CHANGED=$(git diff --name-only HEAD^ HEAD)
 
-          # Function to resize (Simple resize, NO border radius changes)
-          resize_icon() {
-            local source_file=$1
-            local base_name=${source_file%.*}
-            
-            if [[ -f "$source_file" ]]; then
-              echo "Processing $source_file..."
-              for size in "${SIZES[@]}"; do
-                # Convert: resize -> strip metadata -> quality 90 -> save
-                convert "$source_file" -resize ${size}x${size} -strip -quality 90 +repage "${base_name}-${size}.png"
+          resize() {
+            if echo "$CHANGED" | grep -q "$1"; then
+              for s in "${SIZES[@]}"; do
+                convert "$1" -resize ${s}x${s} -strip -quality 90 +repage "${1%.*}-${s}.png"
               done
-            else
-              echo "Skipping $source_file (not found)"
             fi
           }
 
-          # Run for both Square and Circular
-          resize_icon "icon-square.png"
-          resize_icon "icon-circular.png"
+          resize "icon-square.png"
+          resize "icon-circle.png"
 
-      - name: Commit and Push Changes
+      - name: Commit
         run: |
-          # Configure the bot
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Stage the new/updated files
-          git add logos/core/icon-square-*.png
-          git add logos/core/icon-circular-*.png
-          
-          # Commit only if there are changes
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "🤖 Auto-generated icon sizes"
-            git push
-          fi
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add logos/core/*.png
+          git diff --staged --quiet || (git commit -m "Auto-resize icons" && git push)
