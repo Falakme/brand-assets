@@ -1,0 +1,65 @@
+on:
+  push:
+    paths:
+      - 'logos/core/icon-square.png'
+      - 'logos/core/icon-circular.png'
+  workflow_dispatch: # Allows manual triggering if needed
+
+# Grant permission to write the new files back to the repo
+permissions:
+  contents: write
+
+jobs:
+  resize-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+
+      - name: Generate Icon Sizes
+        run: |
+          cd logos/core
+          
+          # Define the standard sizes
+          SIZES=(16 32 48 64 128 180 192 256 512)
+
+          # Function to resize (Simple resize, NO border radius changes)
+          resize_icon() {
+            local source_file=$1
+            local base_name=${source_file%.*}
+            
+            if [[ -f "$source_file" ]]; then
+              echo "Processing $source_file..."
+              for size in "${SIZES[@]}"; do
+                # Convert: resize -> strip metadata -> quality 90 -> save
+                convert "$source_file" -resize ${size}x${size} -strip -quality 90 +repage "${base_name}-${size}.png"
+              done
+            else
+              echo "Skipping $source_file (not found)"
+            fi
+          }
+
+          # Run for both Square and Circular
+          resize_icon "icon-square.png"
+          resize_icon "icon-circular.png"
+
+      - name: Commit and Push Changes
+        run: |
+          # Configure the bot
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Stage the new/updated files
+          git add logos/core/icon-square-*.png
+          git add logos/core/icon-circular-*.png
+          
+          # Commit only if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Auto-generated icon sizes"
+            git push
+          fi
